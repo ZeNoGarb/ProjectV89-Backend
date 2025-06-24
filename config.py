@@ -7,7 +7,7 @@ class Config:
     POSTGRES_USER = os.environ.get('POSTGRES_USER') or 'postgres'
     POSTGRES_PASSWORD = os.environ.get('POSTGRES_PASSWORD') or 'your_password_here'
     POSTGRES_HOST = os.environ.get('POSTGRES_HOST') or 'localhost'
-    POSTGRES_PORT = os.environ.get('POSTGRES_PORT') or '8932'  # เปลี่ยนเป็น 8932
+    POSTGRES_PORT = os.environ.get('POSTGRES_PORT') or '5432'
     POSTGRES_DB = os.environ.get('POSTGRES_DB') or 'flask_app'
     
     # Database URI

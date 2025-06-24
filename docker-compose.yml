@@ -20,7 +20,7 @@ services:
   flask-app:
     build: .
     ports:
-      - "5000:5000"
+      - "8932:8932"
     environment:
       - FLASK_ENV=production
       - SECRET_KEY=your-very-secure-secret-key-change-this

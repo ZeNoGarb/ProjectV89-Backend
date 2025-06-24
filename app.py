@@ -1,6 +1,6 @@
 from flask import Flask, jsonify
 from flask_cors import CORS
-from datetime import datetime
+from datetime import datetime, timezone
 import os
 from dotenv import load_dotenv
 
@@ -34,7 +34,7 @@ def create_app():
     # Health check
     @app.route('/api/health', methods=['GET'])
     def health_check():
-        return jsonify({'status': 'healthy', 'timestamp': datetime.utcnow().isoformat()}), 200
+        return jsonify({'status': 'healthy', 'timestamp': datetime.now(tz=timezone.utc).isoformat()}), 200
     
     # Initialize database
     with app.app_context():

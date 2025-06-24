@@ -1,5 +1,5 @@
 from flask import Blueprint, request, jsonify, current_app
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta, timezone
 import jwt
 from models import db, User
 from utils.decorators import token_required
@@ -39,7 +39,7 @@ def login():
     if user and user.check_password(data['password']) and user.is_active:
         token = jwt.encode({
             'user_id': user.id,
-            'exp': datetime.utcnow() + timedelta(days=1)
+            'exp': datetime.now(tz=timezone.utc) + timedelta(days=1)
         }, current_app.config['SECRET_KEY'], algorithm='HS256')
         
         return jsonify({

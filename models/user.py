@@ -1,5 +1,5 @@
 from werkzeug.security import generate_password_hash, check_password_hash
-from datetime import datetime
+from datetime import datetime, timezone
 from . import db
 
 class User(db.Model):
@@ -7,7 +7,7 @@ class User(db.Model):
     username = db.Column(db.String(80), unique=True, nullable=False)
     email = db.Column(db.String(120), unique=True, nullable=False)
     password_hash = db.Column(db.String(255), nullable=False)  # เปลี่ยนจาก 120 เป็น 255
-    created_at = db.Column(db.DateTime, default=datetime.utcnow)
+    created_at = db.Column(db.DateTime, default=datetime.now(tz=timezone.utc))
     is_active = db.Column(db.Boolean, default=True)
 
     def set_password(self, password):
