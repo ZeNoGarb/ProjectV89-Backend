@@ -31,11 +31,9 @@ def create_log(current_user):
     
     log = Log(
         camera_id=data['camera_id'],
-        # user_id=current_user.id,
-        action=data['action'],
-        # description=data.get('description'),
+        alerted=data['action'],
         prediction_result=data.get('prediction_result'),
-        # confidence_score=data.get('confidence_score'),
+        motion_score=data.get('confidence_score'),
         image_data=data.get('image_data')
     )
     

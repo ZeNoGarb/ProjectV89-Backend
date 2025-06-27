@@ -15,15 +15,13 @@ def get_cameras(current_user):
 def create_camera(current_user):
     data = request.get_json()
     
-    if not data or not data.get('name') or not data.get('location') or not data.get('ip_address'):
+    if not data or not data.get('name') or not data.get('url') or not data.get('status'):
         return jsonify({'message': 'Missing required fields'}), 400
     
     camera = Camera(
         name=data['name'],
-        location=data['location'],
-        ip_address=data['ip_address'],
-        port=data.get('port', 80),
-        user_id=current_user.id
+        url=data['url'],
+        status=data['status'],
     )
     
     db.session.add(camera)
@@ -45,14 +43,8 @@ def update_camera(current_user, camera_id):
     
     if data.get('name'):
         camera.name = data['name']
-    if data.get('location'):
-        camera.location = data['location']
-    if data.get('ip_address'):
-        camera.ip_address = data['ip_address']
-    if data.get('port'):
-        camera.port = data['port']
-    if data.get('is_active') is not None:
-        camera.is_active = data['is_active']
+    if data.get('url'):
+        camera.url = data['url']
     
     db.session.commit()
     return jsonify(camera.to_dict()), 200

@@ -16,3 +16,15 @@ class Config:
     
     SQLALCHEMY_TRACK_MODIFICATIONS = False
     JWT_EXPIRATION_DELTA = 24 * 60 * 60  # 24 hours
+
+    TELEGRAM_TOKEN = os.getenv("TELEGRAM_TOKEN")
+    TELEGRAM_CHAT_ID = os.getenv("TELEGRAM_CHAT_ID")
+
+    MOTION_THRESHOLD = 200000
+    MAX_MOTION_THRESHOLD = 700000
+    COOLDOWN_SECONDS = 60
+    FRAME_SKIP = 15
+
+    # Notification print time window (24-hour format)
+    START_HOUR = 20   # 20:00
+    END_HOUR = 8    # 08:00
